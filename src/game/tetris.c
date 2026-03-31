@@ -22,34 +22,8 @@ void gettetrom(struct tetr *t, int i)
 {
 	t->x = 3;
 	t->y = -3;
-	switch (i) {
-	case 0:
-		t->y = -4;
-		t->blocks = TETR_I;
-		break;
-	case 1:
-		t->blocks = TETR_J;
-		break;
-	case 2:
-		t->blocks = TETR_L;
-		break;
-	case 3:
-		t->y = -2;
-		t->blocks = TETR_O;
-		break;
-	case 4:
-		t->blocks = TETR_S;
-		break;
-	case 5:
-		t->blocks = TETR_T;
-		break;
-	case 6:
-		t->blocks = TETR_Z;
-		break;
-	default:
-		t->blocks = 0;
-		return;
-	}
+	t->y = -4;
+	t->blocks = TETR_I;
 	t->color = tetrom_colors[i];
 }
 
@@ -618,7 +592,7 @@ static int atspawnpos(struct tetr *p)
 		return 0;
 	for (i = 0; i < 7; i++)
 		if (p->blocks == bl[i]) {
-			gettetrom(&t, i);
+			gettetrom(&t, 1);
 			return (p->y == t.y+2);
 		}
 	return 0;
